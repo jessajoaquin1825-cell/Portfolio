@@ -1,31 +1,72 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Jessa | Short-Form Video Editor</title>
+<meta name="description" content="Short-form video editor from the Philippines. Talking-head and storytelling edits with subtitles, keyword highlights and clean pacing.">
+<meta name="theme-color" content="#1b1423">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#0f1115;--card:#181b22;--text:#f2f3f5;--muted:#9aa0ac;--accent:#ff5c8a}
-@media(prefers-color-scheme:light){:root{--bg:#f7f7f9;--card:#fff;--text:#16181d;--muted:#5d6370}}
-*{box-sizing:border-box}body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--text)}
-header{max-width:960px;margin:0 auto;padding:48px 20px 16px}
-h1{font-size:2rem;margin:0 0 8px}header p{color:var(--muted);max-width:560px;line-height:1.5}
-.btn{display:inline-block;margin-top:12px;padding:10px 18px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:600}
-main{max-width:960px;margin:0 auto;padding:16px 20px 56px;display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
-.card{background:var(--card);border-radius:14px;overflow:hidden;text-decoration:none;color:inherit;display:block}
-.card img,.ph{width:100%;aspect-ratio:16/9;object-fit:cover;display:flex;align-items:center;justify-content:center;background:#2a2e38;color:#fff;font-size:2rem}
-.b{padding:14px}.tag{font-size:.75rem;color:var(--accent);font-weight:600}
-h3{margin:6px 0}.b p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.45}
-footer{text-align:center;color:var(--muted);padding:24px;font-size:.85rem}
-.s{max-width:960px;margin:0 auto;padding:24px 20px 0}.s h2{font-size:1.4rem;margin:0 0 12px}.s p{color:var(--muted);line-height:1.6;max-width:640px}
-.sv{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;margin-top:12px}.sv div{background:var(--card);border-radius:12px;padding:14px;font-size:.9rem}.sv b{display:block;color:var(--accent);margin-bottom:4px}
-.b .n{margin-top:8px;font-size:.8rem}.ab{display:flex;gap:20px;align-items:center;flex-wrap:wrap}.ab img{width:180px;height:180px;object-fit:cover;border-radius:50%}.ab p{flex:1;min-width:240px}.ct{text-align:center;padding:32px 20px}.ct h2{margin:0 0 8px}.ct p{color:var(--muted)}
+:root{--bg:#1b1423;--card:#261b31;--text:#f6eef7;--muted:#b9aac1;--accent:#ff5c8a;--hl:#ffd45e;--line:rgba(255,255,255,.1);--serif:'Fraunces',Georgia,serif;--sans:'Manrope',system-ui,sans-serif}
+@media(prefers-color-scheme:light){:root{--bg:#fbf6f1;--card:#fff;--text:#231a2b;--muted:#6b5d74;--accent:#e0366a;--hl:#ffd45e;--line:rgba(35,26,43,.12)}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--sans);background:var(--bg);color:var(--text);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--hl);outline-offset:3px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+header{padding:72px 0 40px}
+header .wrap{display:grid;gap:22px}
+h1{font-family:var(--serif);font-weight:700;font-size:clamp(3rem,11vw,6.5rem);line-height:.95;letter-spacing:-.03em;margin:0}
+.role{font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(1.2rem,3.6vw,1.8rem);color:var(--accent);margin:0}
+header p.lead{color:var(--muted);max-width:540px;font-size:1.05rem;margin:0}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;background:var(--accent);color:#fff;text-decoration:none;font-weight:700;transition:transform .2s,filter .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.08)}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+.btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+section.s{padding:44px 0;border-top:1px solid var(--line)}
+section.s h2,.ct h2{font-family:var(--serif);font-weight:700;font-size:clamp(1.7rem,5vw,2.4rem);letter-spacing:-.01em;margin:0 0 18px}
+section.s p{color:var(--muted);max-width:620px;margin:0}
+.ab{display:flex;gap:28px;align-items:center;flex-wrap:wrap}
+.ab img{width:190px;height:190px;object-fit:cover;border-radius:50%;border:4px solid var(--accent);padding:4px;background:var(--bg)}
+.ab p{flex:1;min-width:250px}
+.sv{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:6px}
+.sv div{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;color:var(--muted);font-size:.93rem}
+.sv b{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--text);margin-bottom:6px}
+main{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:22px;padding:6px 0 56px}
+.card{display:block;text-decoration:none;color:inherit}
+.th{position:relative;aspect-ratio:9/16;overflow:hidden;border-radius:20px;background:#000;box-shadow:0 14px 34px rgba(0,0,0,.28)}
+.th img,.ph{width:100%;height:100%;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:2.4rem;background:var(--card);transition:transform .5s}
+.card:hover .th img{transform:scale(1.05)}
+.play{position:absolute;left:50%;top:50%;width:58px;height:58px;margin:-29px 0 0 -29px;border-radius:50%;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;padding-left:4px;opacity:0;transition:opacity .25s}
+.card:hover .play,.card:focus-visible .play{opacity:1}
+.tag{position:absolute;left:12px;top:12px;background:var(--hl);color:#231a2b;font-size:.75rem;font-weight:700;padding:4px 11px;border-radius:999px}
+.b{padding:16px 4px 0}
+h3{margin:0 0 8px;font-family:var(--sans);font-weight:700;font-size:1.05rem;line-height:1.7}
+h3 span{background:var(--text);color:var(--bg);padding:2px 9px;border-radius:5px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.b p{margin:0;color:var(--muted);font-size:.93rem;line-height:1.55}
+.b p.n{margin-top:8px;font-size:.82rem;font-style:italic}
+.ct{text-align:left;padding:56px 0 64px;border-top:1px solid var(--line)}
+.ct p{color:var(--muted);margin:0 0 20px}
+footer{padding:26px 22px;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);text-align:center}
+@media(prefers-reduced-motion:no-preference){header h1{animation:rise .8s cubic-bezier(.2,.7,.2,1) both}@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto}}
+@media(max-width:520px){main{grid-template-columns:repeat(2,1fr);gap:14px}h3{font-size:.95rem}.b p{font-size:.85rem}.ab img{width:140px;height:140px}}
 </style></head><body>
-<header><h1>Jessa</h1>
-<p>Short-form video editor. I edit talking-head and storytelling videos with subtitles, keyword highlights and clean pacing. I also build AI automations on the side.</p>
-<a class="btn" href="mailto:jessajoaquin1825@gmail.com">Work with me</a></header>
-<section class="s"><h2>About Me</h2><div class="ab"><img src="Messenger_creation_BB3407E4-2F6C-47C7-B9AD-D65DEA331190.jpeg" alt="Jessa"><p>Hi, I am Jessa, a short-form video editor from the Philippines. I turn raw talking-head and storytelling footage into polished, scroll-stopping videos for TikTok, Reels and Shorts, and I use AI tools to deliver faster without losing the human touch. Beyond editing, I build AI automations that save time on repetitive work.</p></div></section>
-<section class="s"><h2>What I Do</h2><div class="sv"><div><b>Subtitles</b>Accurate, easy-to-read captions styled for retention.</div><div><b>Keyword Highlights</b>Key words emphasized so the message sticks.</div><div><b>Clean Pacing</b>Tight cuts that remove dead air and keep viewers watching.</div><div><b>Storytelling Edits</b>Structure and rhythm that carry the emotion of the story.</div></div></section>
-<section class="s"><h2>Bonus: AI Automation</h2><p>On top of editing, I build AI automations with n8n, like this portfolio, which updates itself from a Google Sheet using Claude and GitHub Pages.</p></section>
-<section class="s"><h2>My Work</h2></section>
-<main><a class="card" href="https://vt.tiktok.com/ZSgRPq1Db/" target="_blank" rel="noopener"><img src="https://drive.google.com/file/d/1FbWWTt4LPDrF_fre11Mx0cFD3PBqNFSn/view?usp=drivesdk" alt=""><div class="b"><span class="tag">Story telling</span><h3>A Little Girl With A Big Dream</h3><p>A storytelling short with an AI-generated narrative, edited with clean pacing, clear subtitles, and keyword highlights that carry the emotion of a little girl's big dream.</p><p class="n">ai-generated</p></div></a><a class="card" href="https://vt.tiktok.com/ZSgysTUMD/" target="_blank" rel="noopener"><img src="https://drive.google.com/file/d/1gbpfGOswTfByepWg4x7Hz7N-JjcM_B5d/view?usp=drivesdk" alt=""><div class="b"><span class="tag">Story telling</span><h3>One round can change everything</h3><p>An AI-generated storytelling short built on tight pacing, readable subtitles, and highlighted keywords that keep the tension building around a single life-changing round.</p><p class="n">ai-generated</p></div></a><a class="card" href="https://vt.tiktok.com/ZSguaQbB3/" target="_blank" rel="noopener"><div class="ph">&#9654;</div><div class="b"><span class="tag">Talking Head</span><h3>Freelancing Tips</h3><p>A talking-head video on freelancing tips, edited with crisp pacing, easy-to-read subtitles, and keyword highlights that keep viewers focused on each key point.</p></div></a></main>
-<section class="ct"><h2>Let us work together</h2><p>Have a video to edit? Send me a message.</p><a class="btn" href="mailto:jessajoaquin1825@gmail.com">jessajoaquin1825@gmail.com</a> <a class="btn" href="https://www.tiktok.com/@jhejhe0725" target="_blank" rel="noopener">TikTok</a> <a class="btn" href="https://www.instagram.com/jhejhe_joaquin" target="_blank" rel="noopener">Instagram</a></section>
+<header><div class="wrap">
+<p class="role">Short-form video editor</p>
+<h1>Jessa</h1>
+<p class="lead">I edit talking-head and storytelling videos with subtitles, keyword highlights and clean pacing. I also build AI automations on the side.</p>
+<div class="row"><a class="btn" href="mailto:jessajoaquin1825@gmail.com">Work with me</a><a class="btn ghost" href="#work">See my work</a></div>
+</div></header>
+<div class="wrap">
+<section class="s"><h2>About me</h2><div class="ab"><img src="Messenger_creation_BB3407E4-2F6C-47C7-B9AD-D65DEA331190.jpeg" alt="Jessa"><p>Hi, I am Jessa, a short-form video editor from the Philippines. I turn raw talking-head and storytelling footage into polished, scroll-stopping videos for TikTok, Reels and Shorts, and I use AI tools to deliver faster without losing the human touch. Beyond editing, I build AI automations that save time on repetitive work.</p></div></section>
+<section class="s"><h2>What I do</h2><div class="sv"><div><b>Subtitles</b>Accurate, easy-to-read captions styled for retention.</div><div><b>Keyword highlights</b>Key words emphasized so the message sticks.</div><div><b>Clean pacing</b>Tight cuts that remove dead air and keep viewers watching.</div><div><b>Storytelling edits</b>Structure and rhythm that carry the emotion of the story.</div></div></section>
+<section class="s"><h2>Bonus: AI automation</h2><p>On top of editing, I build AI automations with n8n, like this portfolio, which updates itself from a Google Sheet using Claude and GitHub Pages.</p></section>
+<section class="s" id="work" style="border-bottom:0;padding-bottom:22px"><h2 style="margin:0">My work</h2></section>
+<main><a class="card" href="https://vt.tiktok.com/ZSgRPq1Db/" target="_blank" rel="noopener"><div class="th"><img src="https://drive.google.com/file/d/1FbWWTt4LPDrF_fre11Mx0cFD3PBqNFSn/view?usp=drivesdk" alt=""><span class="play">&#9654;</span><span class="tag">Story telling</span></div><div class="b"><h3><span>A Little Girl With A Big Dream</span></h3><p></p><p class="n">ai-generated</p></div></a><a class="card" href="https://vt.tiktok.com/ZSgysTUMD/" target="_blank" rel="noopener"><div class="th"><img src="https://drive.google.com/file/d/1gbpfGOswTfByepWg4x7Hz7N-JjcM_B5d/view?usp=drivesdk" alt=""><span class="play">&#9654;</span><span class="tag">Story telling</span></div><div class="b"><h3><span>One round can change everything</span></h3><p></p><p class="n">ai-generated</p></div></a><a class="card" href="https://vt.tiktok.com/ZSguaQbB3/" target="_blank" rel="noopener"><div class="th"><div class="ph">&#9654;</div><span class="play">&#9654;</span><span class="tag">Talking Head</span></div><div class="b"><h3><span>Freelancing Tips</span></h3><p></p></div></a></main>
+<section class="ct"><h2>Let us work together</h2><p>Have a video to edit? Send me a message.</p><div class="row"><a class="btn" href="mailto:jessajoaquin1825@gmail.com">jessajoaquin1825@gmail.com</a><a class="btn ghost" href="https://www.tiktok.com/@jhejhe0725" target="_blank" rel="noopener">TikTok</a><a class="btn ghost" href="https://www.instagram.com/jhejhe_joaquin" target="_blank" rel="noopener">Instagram</a></div></section>
+</div>
 <footer>Updated automatically</footer>
 </body></html>
